@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -126,6 +127,12 @@ public ResponseEntity<Object> save(@ModelAttribute("libro") libro libro) {
 				} else {
 					return new ResponseEntity<>("Error libro no encontrado", HttpStatus.BAD_REQUEST);
 				}
+			}
+			
+			@DeleteMapping("/{id_libro}")
+			public ResponseEntity<Object>delete (@PathVariable("id_libro")String id_libro){
+				libroService.delete(id_libro);
+				return new ResponseEntity<>("Libro eliminado",HttpStatus.OK);
 			}
 	
 
