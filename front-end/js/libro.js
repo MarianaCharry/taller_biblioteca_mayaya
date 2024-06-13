@@ -28,7 +28,7 @@ function listarLibro() {
 
         var celdaId = document.createElement("td");
         let celdaTituloLibro = document.createElement("td")
-        let celdaNumeroDocumento = document.createElement("td")
+        let celda = document.createElement("td")
         let celdaPrimerNombre = document.createElement("td")
         let celdaSegundoNombre = document.createElement("td")
         let celdaPrimerApellido = document.createElement("td")
