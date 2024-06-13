@@ -12,7 +12,7 @@ public interface ILibroService {
 	public List<libro> filtroLibro(String filtro);
 	public Optional<libro>findOne (String id);
 	public int delete (String id);
-	public List<libro>filtroIngresoLibro(String isbn_libro);
+	public List<libro>filtroIngresoLibro(String titulo_libro);
 	
 	
 }

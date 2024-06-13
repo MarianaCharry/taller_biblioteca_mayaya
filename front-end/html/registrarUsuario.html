@@ -10,8 +10,8 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
-    <title>Añadir libro</title>
-    <script src="/front-end/js/libro.js"></script>
+    <title>Registrar usuario</title>
+    <script src="../js/usuario.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -23,46 +23,44 @@
         <div class="row">
             <a href="../html/paginaPrincipal.html"> <img src="../img/volver.png" alt="" width="50px" style="margin-top: 80px;"></a>
         </div>
-        <h1 style="margin-top: 100px">Añadir libro</h1>
+        <h1 style="margin-top: 100px">Añadir Usuario</h1>
         <h6>Todos los campos con asterisco son obligatorios *</h6>
         <br>
         <div class="row">
+
             <div class="col col-xl-6 col-12">
-                <b><label for="">Título libro *</label></b>
-                <input type="text" id="titulo_libro" class="form-control" onfocusout="validarTitulo_libro(this);" />
+                <b><label for="">Número documento *</label></b>
+                <input type="number" id="numero_documento_usuario" step="1" class="form-control"
+                    onfocusout="validarNumDocumento(this);" />
             </div>
 
             <div class="col col-xl-6 col-12">
-                <b><label for="">Autor libro *</label></b>
-                <input type="text" id="autor_libro" class="form-control" onfocusout="validarAutor_libro(this);" />
+                <b><label for="">Nombre completo *</label></b>
+                <input type="text" id="nombre_usuario" class="form-control" onfocusout="validarNombre(this);" />
             </div>
 
             <div class="col col-xl-6 col-12">
-                <b><label for="">ISBN libro *</label></b>
-                <input type="number" id="isbn_libro" step="1" class="form-control"
-                    onfocusout="validarIsbn_libro(this);" />
+                <b><label for="">Dirección *</label></b>
+                <input type="text" id="direccion_usuario" class="form-control" onfocusout="validarDireccion(this);" />
             </div>
+
+            
             <div class="col col-xl-6 col-12">
-                <b><label for="">Genero libro *</label></b>
-                <input type="text" id="genero_libro" class="form-control" onfocusout="validarGenero_libro(this);" />
+                <b><label for="">Correo electrónico *</label></b>
+                <input type="text" id="correo_electronico_usuario" class="form-control" onfocusout="validarCorreo(this);" />
             </div>
+
             <div class="col col-xl-6 col-12">
-                <b><label for="">Numero ejemplares disponibles *</label></b>
-                <input type="number" id="numero_ejemplares_disponibles" step="1" class="form-control"
-                    onfocusout="validarNumero_ejemplares_disponibles(this);" />
-            </div>
-            <div class="col col-xl-6 col-12">
-                <b><label for="">Numero ejemplares ocupados *</label></b>
-                <input type="text" id="numero_ejemplares_ocupados" class="form-control"
-                    onfocusout="validarNumero_ejemplares_ocupados(this);" />
+                <b><label for="">Tipo usuario *</label></b>
+                <input type="text" id="tipo_usuario" class="form-control" onfocusout="validarTipo_usuario(this);" />
             </div>
             
         </div>
         <br>
-        <button class="btn btn-success" onclick="registrarLibro();">
+        <button class="btn btn-success" onclick="registrarUsuario();">
             Enviar
         </button>
-        <button class="btn btn-primary" onclick="limpiarLibro();">
+        <button class="btn btn-primary" onclick="limpiarUsuario();">
             Limpiar
         </button>
         <a href="./paginaPrincipal.html"><button class="btn btn-warning">Ir a página Principal</button></a>

@@ -5,12 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="css/bootstrap.css" />
-  <script src="jss/bootstrap.js"></script>
+  <link rel="stylesheet" href="../css/bootstrap.css" />
+  <script src="../js/bootstrap.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/front-end/js/libro.js"></script>
+  <script src="../js/libro.js"></script>
   <title>Listado libros</title>
 </head>
 <!--cse requiere que cuando cargue la pagina se ejecute la peticionde listar los clientes-->
@@ -18,6 +18,9 @@
 <body onload="listarLibro();">
   <div class="container">
 
+    <div class="row">
+      <a href="../html/paginaPrincipal.html"> <img src="../img/volver.png" alt="" width="50px" style="margin-top: 80px;"></a>
+  </div>
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid">
         <b><a class="navbar-brand">Filtros</a></b>
@@ -68,65 +71,40 @@
         </div>
         <div class="modal-body">
           <div class="row">
+            <h6>Todos los campos con asterisco son obligatorios *</h6>
+            <input id="id_libro" type="hidden">
             <div class="col col-xl-6 col-12">
-              <label for="">Tipo documento</label>
-              <select name="" id="tipo_documento" class="form-select">
-                <option value="" selected disabled>Selecciona una opción</option>
-                <option value="RC">Registro Civil</option>
-                <option value="TI">Tarjeta de Identidad</option>
-                <option value="CC">Cédula de Ciudadanía</option>
-                <option value="CE">Cédula de Extranjería</option>
-              </select>
+                <b><label for="">Título libro *</label></b>
+                <input type="text" id="titulo_libro" class="form-control" onfocusout="validarTitulo_libro(this);" />
             </div>
 
             <div class="col col-xl-6 col-12">
-              <label for="">Número de documento</label>
-              <input type="hidden" id="id_medico" step="1">
+                <b><label for="">Autor libro *</label></b>
+                <input type="text" id="autor_libro" class="form-control" onfocusout="validarAutor_libro(this);" />
+            </div>
 
-              <input type="number" id="numero_documento" step="1" class="form-control"
-                onfocusout="validarNumeroDocumento(this);" />
+            <div class="col col-xl-6 col-12">
+                <b><label for="">ISBN libro *</label></b>
+                <input type="number" id="isbn_libro" step="1" class="form-control"
+                    onfocusout="validarIsbn_libro(this);" />
             </div>
             <div class="col col-xl-6 col-12">
-              <label for="">Primer Nombre</label>
-              <input type="text" id="primer_nombre" class="form-control" />
+                <b><label for="">Genero libro *</label></b>
+                <input type="text" id="genero_libro" class="form-control" onfocusout="validarGenero_libro(this);" />
             </div>
             <div class="col col-xl-6 col-12">
-              <label for="">Segundo Nombre</label>
-              <input type="text" id="segundo_nombre" class="form-control" />
+                <b><label for="">Numero ejemplares disponibles *</label></b>
+                <input type="number" id="numero_ejemplares_disponibles" step="1" class="form-control"
+                    onfocusout="validarNumero_ejemplares_disponibles(this);" />
             </div>
             <div class="col col-xl-6 col-12">
-              <label for="">Primer Apellido</label>
-              <input type="text" id="primer_apellido" class="form-control" />
+                <b><label for="">Numero ejemplares ocupados *</label></b>
+                <input type="text" id="numero_ejemplares_ocupados" class="form-control"
+                    onfocusout="validarNumero_ejemplares_ocupados(this);" />
             </div>
-            <div class="col col-xl-6 col-12">
-              <label for="">Segundo Apellido</label>
-              <input type="text" id="segundo_apellido" class="form-control" />
-            </div>
-            <div class="col col-xl-6 col-12">
-              <label for="">Teléfono</label>
-              <input type="text" id="telefono" class="form-control" />
-            </div>
-            <div class="col col-xl-6 col-12">
-              <label for="">Correo</label>
-              <input type="email" id="correo" class="form-control" />
-            </div>
-            <div class="col col-xl-6 col-12">
-              <label for="">Dirección</label>
-              <input type="text" id="direccion" class="form-control" />
-            </div>
-            <div class="col col-xl-6 col-12">
-              <label for="estado">Estado</label>
-              <select id="estado" class="form-select">
-                <option value="" selected disabled>Seleccione una opción</option>
-                <option value="H">Habilitado</option>
-                <option value="D">Deshabilitado</option>
-              </select>
-            </div>
-          </div>
-          <button class="btn btn-success" onclick="limpiarMedico();">
-            Limpiar
-          </button>
-          <button type="button" class="btn btn-primary" onclick="actualizarMedico();">Actualizar</button>
+            
+        </div>
+          <button type="button" class="btn btn-primary" onclick="actualizarLibro();">Actualizar</button>
         </div>
       </div>
       <div class="modal-footer">

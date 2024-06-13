@@ -2,144 +2,156 @@ var url = "http://localhost:8080/api/v1/libro/";
 
 
 function listarLibro() {
-  //METODO PARA LISTAR LOS CLIENTES
-  //SE CREA LA PETICION AJAX
   var capturarFiltro = document.getElementById("inputSearch").value;
-  var urlLocal=url;
-  if (capturarFiltro!=""){
-    urlLocal+="busquedafiltro/"+capturarFiltro;
+  var urlLocal = url;
+  if (capturarFiltro != "") {
+    urlLocal += "busquedafiltro/" + capturarFiltro;
   }
-  
+
   $.ajax({
     url: urlLocal,
     type: "GET",
-    success: function (result) {
-      //success: funcion que se ejecuta
-      //cuando la peticion tiene exito
+    success: function(result) {
       console.log(result);
 
       var cuerpoTabla = document.getElementById("cuerpoTabla");
-      //Se limpia el cuepro de la tabla
       cuerpoTabla.innerHTML = "";
-      //se hace un ciclo que recorra l arreglo con los datos
+
       for (var i = 0; i < result.length; i++) {
-        //UNA ETIQUETA tr por cada registro
         var trResgistro = document.createElement("tr");
 
         var celdaId = document.createElement("td");
-        let celdaTituloLibro = document.createElement("td")
-        let celda = document.createElement("td")
-        let celdaPrimerNombre = document.createElement("td")
-        let celdaSegundoNombre = document.createElement("td")
-        let celdaPrimerApellido = document.createElement("td")
-        let celdaSegundoApellido = document.createElement("td")
-        let celdaTelefono = document.createElement("td")
-        let celdaCorreo = document.createElement("td")
-        let celdaDireccion = document.createElement("td")
-        let celdaEstado = document.createElement("td")
+        let celdaTituloLibro = document.createElement("td");
+        let celdaAutorLibro = document.createElement("td");
+        let celdaIsbnLibro = document.createElement("td");
+        let celdaGeneroLibro = document.createElement("td");
+        let celdaEjemplaresDisponibles = document.createElement("td");
+        let celdaEjemplaresOcupados = document.createElement("td");
 
-        let celdaOpcion = document.createElement("td");
-        let botonEditarMedico = document.createElement("button");
-        botonEditarMedico.value=result[i]["id_medico"];
-        botonEditarMedico.innerHTML = "Editar";
-        
-        botonEditarMedico.onclick=function(e){
+        let celdaOpcionEditar = document.createElement("td");
+        let botonEditarLibro = document.createElement("button");
+        botonEditarLibro.value = result[i]["id_libro"];
+        botonEditarLibro.innerHTML = "Editar";
+        botonEditarLibro.onclick = function(e) {
           $('#exampleModal').modal('show');
-          consultarMedicoID(this.value);
+          consultarLibroID(this.value);
         }
+        botonEditarLibro.className = "btn btn-warning editar-libro";
+        celdaOpcionEditar.appendChild(botonEditarLibro);
 
-        botonEditarMedico.className = "btn btn-warning editar-medico";
+        let celdaOpcionEliminar = document.createElement("td");
+        let botonEliminarLibro = document.createElement("button");
+        botonEliminarLibro.value = result[i]["id_libro"];
+        botonEliminarLibro.innerHTML = "Eliminar";
+        botonEliminarLibro.onclick = function(e) {
+          // Aquí deberías escribir la lógica para eliminar el libro con el id correspondiente
+          // Puedes usar una función separada para realizar la eliminación
+          eliminarLibro(this.value);
+        }
+        botonEliminarLibro.className = "btn btn-danger eliminar-libro";
+        celdaOpcionEliminar.appendChild(botonEliminarLibro);
 
-        
-        celdaId.innerText = result[i]["id_medico"];
-        celdaTituloLibro.innerText = result[i]["tipo_documento"];
-        celdaNumeroDocumento.innerText = result[i]["numero_documento"];
-        celdaPrimerNombre.innerText = result[i]["primer_nombre"];
-        celdaSegundoNombre.innerText = result[i]["segundo_nombre"];
-        celdaPrimerApellido.innerText = result[i]["primer_apellido"];
-        celdaSegundoApellido.innerText = result[i]["segundo_apellido"];
-        celdaTelefono.innerText = result[i]["telefono"];
-        celdaCorreo.innerText = result[i]["correo"];
-        celdaDireccion.innerText = result[i]["direccion"];
-        celdaEstado.innerText = result[i]["estado"];
-
+        celdaId.innerText = result[i]["id_libro"];
+        celdaTituloLibro.innerText = result[i]["titulo_libro"];
+        celdaAutorLibro.innerText = result[i]["autor_libro"];
+        celdaIsbnLibro.innerText = result[i]["isbn_libro"];
+        celdaGeneroLibro.innerText = result[i]["genero_libro"];
+        celdaEjemplaresDisponibles.innerText = result[i]["numero_ejemplares_disponibles"];
+        celdaEjemplaresOcupados.innerText = result[i]["numero_ejemplares_ocupados"];
 
         trResgistro.appendChild(celdaId);
-        trResgistro.appendChild(celdaTipoDocumento);
-        trResgistro.appendChild(celdaNumeroDocumento);
-        trResgistro.appendChild(celdaPrimerNombre);
-        trResgistro.appendChild(celdaSegundoNombre);
-        trResgistro.appendChild(celdaPrimerApellido);
-        trResgistro.appendChild(celdaSegundoApellido);
-        trResgistro.appendChild(celdaTelefono);
-        trResgistro.appendChild(celdaCorreo);
-        trResgistro.appendChild(celdaDireccion);
-        trResgistro.appendChild(celdaEstado);
+        trResgistro.appendChild(celdaTituloLibro);
+        trResgistro.appendChild(celdaAutorLibro);
+        trResgistro.appendChild(celdaIsbnLibro);
+        trResgistro.appendChild(celdaGeneroLibro);
+        trResgistro.appendChild(celdaEjemplaresDisponibles);
+        trResgistro.appendChild(celdaEjemplaresOcupados);
+        trResgistro.appendChild(celdaOpcionEditar);
+        trResgistro.appendChild(celdaOpcionEliminar);
 
-
-        celdaOpcion.appendChild(botonEditarMedico);
-        trResgistro.appendChild(celdaOpcion)
-
-       
         cuerpoTabla.appendChild(trResgistro);
-
-
-        //creamos un td por cada campo de resgistro
-
       }
     },
-    error: function (error) {
-      /*
-      ERROR: funcion que se ejecuta cuando la peticion tiene un error
-      */
+    error: function(error) {
       alert("Error en la petición " + error);
     }
-  })
-  
+  });
 }
 
+
+function eliminarLibro(idLibro) {
+  // Confirmar con el usuario antes de eliminar
+  Swal.fire({
+    title: "¿Estás seguro?",
+    text: "¿Deseas eliminar este libro?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sí, eliminar",
+    cancelButtonText: "Cancelar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Realizar la petición AJAX para eliminar el libro
+      $.ajax({
+        url: url + idLibro,
+        type: "DELETE",
+        success: function(response) {
+          // Mostrar mensaje de confirmación
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: "El libro ha sido eliminado correctamente.",
+            icon: "success"
+          });
+          // Volver a cargar la lista de libros después de eliminar
+          listarLibro();
+        },
+        error: function(error) {
+          // Mostrar mensaje de error si la petición falla
+          Swal.fire("Error", "Error al eliminar el libro. " + error.responseText, "error");
+        }
+      });
+    }
+  });
+}
+
+
+
+
 //
-function consultarMedicoID(id){
+function consultarLibroID(id){
   //alert(id);
   $.ajax({
       url:url+id,
       type:"GET",
       success: function(result){
-          document.getElementById("id_medico").value=result["id_medico"];
-          document.getElementById("tipo_documento").value=result["tipo_documento"];
-          document.getElementById("numero_documento").value=result["numero_documento"];
-          document.getElementById("primer_nombre").value=result["primer_nombre"];
-          document.getElementById("segundo_nombre").value=result["segundo_nombre"];
-          document.getElementById("primer_apellido").value=result["primer_apellido"];
-          document.getElementById("segundo_apellido").value=result["segundo_apellido"];
-          document.getElementById("telefono").value=result["telefono"];
-          document.getElementById("correo").value=result["correo"];
-          document.getElementById("direccion").value=result["direccion"];
-          document.getElementById("estado").value=result["estado"];
+          document.getElementById("id_libro").value=result["id_libro"];
+          document.getElementById("titulo_libro").value=result["titulo_libro"];
+          document.getElementById("autor_libro").value=result["autor_libro"];
+          document.getElementById("isbn_libro").value=result["isbn_libro"];
+          document.getElementById("genero_libro").value=result["genero_libro"];
+          document.getElementById("numero_ejemplares_disponibles").value=result["numero_ejemplares_disponibles"];
+          document.getElementById("numero_ejemplares_ocupados").value=result["numero_ejemplares_ocupados"];
       }
   });
 }
-//2.Crear petición que actualice la información del medico
+//2.Crear petición que actualice la información del libro
 
 
-function actualizarMedico() { 
-  var id_medico=document.getElementById("id_medico").value
+function actualizarLibro() { 
+  var id_libro=document.getElementById("id_libro").value
   let formData={
-      "tipo_documento": document.getElementById("tipo_documento").value,
-      "numero_documento": document.getElementById("numero_documento").value,
-      "primer_nombre": document.getElementById("primer_nombre").value,
-      "segundo_nombre": document.getElementById("segundo_nombre").value,
-      "primer_apellido": document.getElementById("primer_apellido").value,
-      "segundo_apellido": document.getElementById("segundo_apellido").value,
-      "telefono": document.getElementById("telefono").value,
-      "correo": document.getElementById("correo").value,
-      "direccion": document.getElementById("direccion").value,
-      "estado": document.getElementById("estado").value
+      "titulo_libro": document.getElementById("titulo_libro").value,
+      "autor_libro": document.getElementById("autor_libro").value,
+      "isbn_libro": document.getElementById("isbn_libro").value,
+      "genero_libro": document.getElementById("genero_libro").value,
+      "numero_ejemplares_disponibles": document.getElementById("numero_ejemplares_disponibles").value,
+      "numero_ejemplares_ocupados": document.getElementById("numero_ejemplares_ocupados").value
 };
 
 if (validarCampos()) {
   $.ajax({
-      url:url+id_medico,
+      url:url+id_libro,
       type: "PUT",
       data: formData,
     
@@ -152,8 +164,8 @@ if (validarCampos()) {
               text: "Se guardó correctamente",
               icon: "success"
             });
-          // Puedes hacer algo adicional como recargar la lista de médicos
-          listarMedico();
+          // Puedes hacer algo adicional como recargar la lista de libros
+          listarLibro();
       },
       error: function(error) {
           // Manejar el error de la petición
@@ -176,19 +188,15 @@ if (validarCampos()) {
   }
   function validarCampos() {
     // Obtener los valores de los campos
-    var tipo_documento = document.getElementById("tipo_documento").value;
-    var numero_documento = document.getElementById("numero_documento").value;
-    var primer_nombre = document.getElementById("primer_nombre").value;
-    var segundo_nombre = document.getElementById("segundo_nombre").value;
-    var primer_apellido = document.getElementById("primer_apellido").value;
-    var segundo_apellido = document.getElementById("segundo_apellido").value;
-    var telefono = document.getElementById("telefono").value;
-    var correo = document.getElementById("correo").value;
-    var direccion = document.getElementById("direccion").value;
-    var estado = document.getElementById("estado").value;
+    var titulo_libro = document.getElementById("titulo_libro").value;
+    var autor_libro = document.getElementById("autor_libro").value;
+    var isbn_libro = document.getElementById("isbn_libro").value;
+    var genero_libro = document.getElementById("genero_libro").value;
+    var numero_ejemplares_disponibles = document.getElementById("numero_ejemplares_disponibles").value;
+    var numero_ejemplares_ocupados = document.getElementById("numero_ejemplares_ocupados").value
   
     // Verificar si algún campo está vacío
-    if (tipo_documento === '' || numero_documento === '' || primer_nombre === '' || primer_apellido === '' || telefono === '' || correo === '' || direccion === '' || estado === '') {
+    if (titulo_libro === '' || autor_libro === '' || isbn_libro === '' || genero_libro === '' || numero_ejemplares_disponibles === '' || numero_ejemplares_ocupados === '') {
       return false; // Al menos un campo está vacío
     } else {
       return true; // Todos los campos están llenos
@@ -199,33 +207,27 @@ if (validarCampos()) {
 
   
 
-function registrarMedico() {
+function registrarLibro() {
 
 
   let formData = {
-    "tipo_documento": document.getElementById("tipo_documento").value,
-    "numero_documento": document.getElementById("numero_documento").value,
-    "primer_nombre": document.getElementById("primer_nombre").value,
-    "segundo_nombre": document.getElementById("segundo_nombre").value,
-    "primer_apellido": document.getElementById("primer_apellido").value,
-    "segundo_apellido": document.getElementById("segundo_apellido").value,
-    "telefono": document.getElementById("telefono").value,
-    "correo": document.getElementById("correo").value,
-    "direccion": document.getElementById("direccion").value,
-    "estado": document.getElementById("estado").value
+    "titulo_libro": document.getElementById("titulo_libro").value,
+    "autor_libro": document.getElementById("autor_libro").value,
+    "isbn_libro": document.getElementById("isbn_libro").value,
+    "genero_libro": document.getElementById("genero_libro").value,
+    "numero_ejemplares_disponibles": document.getElementById("numero_ejemplares_disponibles").value,
+    "numero_ejemplares_ocupados": document.getElementById("numero_ejemplares_ocupados").value
 
   };
 
   let camposValidos = true;
   let camposRequeridos = [
-      "tipo_documento",
-      "numero_documento",
-      "primer_nombre",
-      "primer_apellido",
-      "telefono",
-      "correo",
-      "direccion",
-      "estado"
+      "titulo_libro",
+      "autor_libro",
+      "isbn_libro",
+      "genero_libro",
+      "numero_ejemplares_disponibles",
+      "numero_ejemplares_ocupados"
   ];
 
   camposRequeridos.forEach(function(campo) {
@@ -247,7 +249,7 @@ function registrarMedico() {
                   text: "Se guardó correctamente",
                   icon: "success"
               });
-              limpiarMedico();
+              limpiarLibro();
           },
           error: function (error) {
               Swal.fire("Error", "Error al guardar, " + error.responseText, "error");
@@ -268,14 +270,14 @@ function registrarMedico() {
 
 
 function validarCampos() {
-  var numero_documento = document.getElementById("numero_documento");
-  return validarNumeroDocumento(numero_documento);
+  var isbn_libro = document.getElementById("isbn_libro");
+  return validarIsbn_libro(isbn_libro);
 }
-function validarNumeroDocumento(cuadroNumero) {
+function validarIsbn_libro(cuadroNumero) {
   /*
-  numero documento 
+  isbn del libro
   min=5
-  max=11
+  max=40
   numero entero
 
   si cumple, se cambia color a verde
@@ -283,7 +285,7 @@ function validarNumeroDocumento(cuadroNumero) {
   */
   var valor = cuadroNumero.value;
   var valido = true;
-  if (valor.length < 5 || valor.length > 11) {
+  if (valor.length < 5 || valor.length > 40) {
     valido = false
   }
 
@@ -298,17 +300,17 @@ function validarNumeroDocumento(cuadroNumero) {
 
 }
 
-//Validadnombre
+//ValidadAutor
 
 function validarCampos() {
-  var primer_nombre = document.getElementById("primer_nombre");
-  return validarPrimer_nombre(primer_nombre);
+  var autor_libro = document.getElementById("autor_libro");
+  return validarAutor_libro(autor_libro);
 }
-function validarPrimer_nombre(cuadroNumero) {
+function validarAutor_libro(cuadroNumero) {
 
   var valor = cuadroNumero.value;
   var valido = true;
-  if (valor.length < 1 || valor.length > 15) {
+  if (valor.length < 3 || valor.length > 40) {
     valido = false
   }
 
@@ -323,16 +325,16 @@ function validarPrimer_nombre(cuadroNumero) {
 
 }
 
-//ValidadApellido
+//Valida el titulo del libro
 function validarCampos() {
-  var primer_apellido = document.getElementById("primer_apellido");
-  return validarPrimer_apellido(primer_apellido);
+  var titulo_libro = document.getElementById("titulo_libro");
+  return validarTitulo_libro(titulo_libro);
 }
-function validarPrimer_apellido(cuadroNumero) {
+function validarTitulo_libro(cuadroNumero) {
   
   var valor = cuadroNumero.value;
   var valido = true;
-  if (valor.length < 1 || valor.length > 11) {
+  if (valor.length < 2 || valor.length > 40) {
     valido = false
   }
 
@@ -347,16 +349,16 @@ function validarPrimer_apellido(cuadroNumero) {
 
 }
 
-//ValidadTelefono
+//Valida el genero
 function validarCampos() {
-  var telefono = document.getElementById("telefono");
-  return validarTelefono(telefono);
+  var genero_libro = document.getElementById("genero_libro");
+  return validarGenero_libro(genero_libro);
 }
-function validarTelefono(cuadroNumero) {
+function validarGenero_libro(cuadroNumero) {
   
   var valor = cuadroNumero.value;
   var valido = true;
-  if (valor.length < 10 || valor.length > 15) {
+  if (valor.length < 5 || valor.length > 40) {
     valido = false
   }
 
@@ -371,16 +373,16 @@ function validarTelefono(cuadroNumero) {
 
 }
 
-//ValidadCorreo
+//Valida los numeros de ejemplares que estan disponibles
 function validarCampos() {
-  var correo = document.getElementById("correo");
-  return validarCorreo(correo);
+  var numero_ejemplares_disponibles = document.getElementById("numero_ejemplares_disponibles");
+  return validarNumero_ejemplares_disponibles(numero_ejemplares_disponibles);
 }
-function validarCorreo(cuadroNumero) {
+function validarNumero_ejemplares_disponibles(cuadroNumero) {
   
   var valor = cuadroNumero.value;
   var valido = true;
-  if (valor.length < 5 || valor.length > 100) {
+  if (valor.length < 1 || valor.length > 40) {
     valido = false
   }
 
@@ -394,43 +396,18 @@ function validarCorreo(cuadroNumero) {
   return valido;
 
 }
-//ValidadDireccion
+//Valida los numeros de ejemplares que ya estan ocupados
 
 
 function validarCampos() {
-  var direccion = document.getElementById("direccion");
-  return validarDireccion(direccion);
+  var numero_ejemplares_ocupados = document.getElementById("numero_ejemplares_ocupados");
+  return validarNumero_ejemplares_ocupados(numero_ejemplares_ocupados);
 }
-function validarDireccion(cuadroNumero) {
+function validarNumero_ejemplares_ocupados(cuadroNumero) {
   
   var valor = cuadroNumero.value;
   var valido = true;
-  if (valor.length < 10  || valor.length > 200) {
-    valido = false
-  }
-
-  if (valido) {
-    //cuadro de texto cumple
-    cuadroNumero.className = "form-control is-valid";
-  } else {
-    //cuadro de texto no cumple
-    cuadroNumero.className = "form-control is-invalid";
-  }
-  return valido;
-
-}
-//ValidadEstado
-
-
-function validarCampos() {
-  var estado = document.getElementById("estado");
-  return validarEstado(estado);
-}
-function validarEstado(cuadroNumero) {
-  
-  var valor = cuadroNumero.value;
-  var valido = true;
-  if (valor.length < 1  || valor.length > 1) {
+  if (valor.length < 1  || valor.length > 40) {
     valido = false
   }
 
@@ -445,22 +422,22 @@ function validarEstado(cuadroNumero) {
 
 }
 
-function limpiarMedico() {
-  document.getElementById("numero_documento").className="form-control";
-  document.getElementById("primer_nombre").className="form-control";
-  document.getElementById("primer_apellido").className="form-control";
-  document.getElementById("telefono").className="form-control";
-  document.getElementById("correo").className="form-control";
-  document.getElementById("direccion").className="form-control";
-  document.getElementById("estado").className="form-control";
-  document.getElementById("tipo_documento").value = "";
-  document.getElementById("numero_documento").value = "";
-  document.getElementById("primer_nombre").value = "";
-  document.getElementById("segundo_nombre").value = "";
-  document.getElementById("primer_apellido").value = "";
-  document.getElementById("segundo_apellido").value = "";
-  document.getElementById("telefono").value = "";
-  document.getElementById("correo").value = "";
-  document.getElementById("direccion").value = "";
-  document.getElementById("estado").value = "";
+
+
+
+function limpiarLibro() {
+  document.getElementById("titulo_libro").className="form-control";
+  document.getElementById("autor_libro").className="form-control";
+  document.getElementById("isbn_libro").className="form-control";
+  document.getElementById("genero_libro").className="form-control";
+  document.getElementById("numero_ejemplares_disponibles").className="form-control";
+  document.getElementById("numero_ejemplares_ocupados").className="form-control";
+
+
+  document.getElementById("titulo_libro").value = "";
+  document.getElementById("autor_libro").value = "";
+  document.getElementById("isbn_libro").value = "";
+  document.getElementById("genero_libro").value = "";
+  document.getElementById("numero_ejemplares_disponibles").value = "";
+  document.getElementById("numero_ejemplares_ocupados").value = "";
 }
