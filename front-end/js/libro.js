@@ -242,6 +242,7 @@ function registrarLibro() {
       $.ajax({
           url: url,
           type: "POST",
+          
           data: formData,
           success: function (result) {
               Swal.fire({

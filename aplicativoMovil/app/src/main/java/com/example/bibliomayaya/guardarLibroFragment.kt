@@ -10,10 +10,15 @@ import android.widget.EditText
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.JsonRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.bibliomayaya.config.config
+// import com.google.gson.JsonObject
 import java.lang.Exception
+import org.json.JSONObject
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,9 +47,18 @@ class guardarLibroFragment : Fragment() {
 
     private var id:String=""
 
+    /*respuestas:
+    * request es la peticion que hace a la API
+    * stringRequest: responde un String
+    * JSONRequest: responde un JSON
+    * JSONArrayRequest: responde un arreglo de JSON*/
+
+
     fun guardarLibro(){
         try {
             if (id==""){//se crea el libro
+
+            /*
              //se crea la peticion
                 val request= object :StringRequest(
                     Request.Method.POST,
@@ -71,6 +85,38 @@ class guardarLibroFragment : Fragment() {
                         return parametros
                     }
                 }
+                   }*/
+                var parametros=JSONObject()
+                parametros.put("titulo_libro",txtTitulo.text.toString())
+                parametros.put("autor_libro",txtAutor.text.toString())
+                parametros.put("isbn_libro",tXtISBN.text.toString())
+                parametros.put("genero_libro",txtGenero.text.toString())
+                parametros.put("numero_ejemplares_disponibles",txtDisponible.text.toString())
+                parametros.put("numero_ejemplares_ocupados",txtOcupado.text.toString())
+
+                var request=JsonObjectRequest(
+                Request.Method.POST,
+                    config.urlLibro,
+                parametros,
+
+                {response->
+                Toast.makeText(
+                    context,
+                    "Se guardó correctamente",
+                    Toast.LENGTH_LONG
+
+                ).show()
+                },
+                { error ->
+                    Toast.makeText(
+                        context,
+                        "Se generó un error",
+                        Toast.LENGTH_LONG)
+                        .show()
+                    
+
+                }
+                )
                 //se crea la cola de trabajo y se añade la petición
                 var queue=Volley.newRequestQueue(context)
                 //se añade la petición
