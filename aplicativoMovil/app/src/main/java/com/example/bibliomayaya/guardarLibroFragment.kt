@@ -51,7 +51,7 @@ class guardarLibroFragment : Fragment() {
                     config.urlLibro,
                     Response.Listener {
                                       //método que se ejecuta cuando la peticion es correcta
-                                      Toast.makeText(context,"Se guardó ncorrectamente",
+                                      Toast.makeText(context,"Se guardó correctamente",
                         Toast.LENGTH_LONG).show()
                     },
                     Response.ErrorListener {
@@ -101,7 +101,7 @@ class guardarLibroFragment : Fragment() {
         var view= inflater.inflate(R.layout.fragment_guardar_libro, container, false)
         txtTitulo=view.findViewById(R.id.txtTitulo)
         txtAutor=view.findViewById(R.id.txtAutor)
-        tXtISBN=view.findViewById(R.id.tXtISBN)
+        tXtISBN=view.findViewById(R.id.txtISBN)
         txtGenero=view.findViewById(R.id.txtGenero)
         txtDisponible=view.findViewById(R.id.txtDisponibles)
         txtOcupado=view.findViewById(R.id.txtOcupados)
