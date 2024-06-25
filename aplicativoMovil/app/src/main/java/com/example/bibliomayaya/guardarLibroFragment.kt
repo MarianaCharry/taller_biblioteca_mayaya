@@ -9,12 +9,15 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.android.volley.Request
+import com.android.volley.Request.Method
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.JsonRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.bibliomayaya.config.config
+import com.example.bibliomayaya.models.libro
+import com.google.gson.Gson
 // import com.google.gson.JsonObject
 import java.lang.Exception
 import org.json.JSONObject
@@ -45,7 +48,7 @@ class guardarLibroFragment : Fragment() {
 
     private lateinit var btnGuardar: Button
 
-    private var id:String=""
+    private var id:String="1435caae-3ed3-4455-98f7-32258fe0673f"
 
     /*respuestas:
     * request es la peticion que hace a la API
@@ -53,6 +56,30 @@ class guardarLibroFragment : Fragment() {
     * JSONRequest: responde un JSON
     * JSONArrayRequest: responde un arreglo de JSON*/
 
+    fun consultarLibro(){
+        if (id!=""){
+
+            var request=JsonObjectRequest(
+                Method.GET, //método de la petición
+                config.urlLibro+id, //url
+                null, //parámetros
+                {response->
+                val gson=Gson()
+                    val libro:libro=gson.fromJson(response.toString(),libro::class.java)
+                    txtAutor.setText(libro.autor_libro)
+                },
+                {error->
+                    Toast.makeText(
+                        context,
+                        "Error al consultar",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            )
+            var queue=Volley.newRequestQueue(context)
+            queue.add(request)
+        }
+    }
 
     fun guardarLibro(){
         try {
@@ -154,6 +181,7 @@ class guardarLibroFragment : Fragment() {
         btnGuardar=view.findViewById(R.id.btnGuardar)
         btnGuardar.setOnClickListener{guardarLibro()
         }
+        consultarLibro()
         return view
     }
 

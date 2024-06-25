@@ -1,6 +1,36 @@
 var url = "http://localhost:8080/api/v1/libro/";
 
+document.getElementById("titulo_libro").addEventListener("keypress",soloLetras);
+document.getElementById("autor_libro").addEventListener("keypress",soloLetras);
+document.getElementById("genero_libro").addEventListener("keypress",soloLetras);
 
+function soloLetras(event){
+  console.log("Llave presionada: "+event.key);
+  console.log("Código tecla: "+event.keyCode);
+  
+  const letrasPermitidas=[
+    //letras en minúsculas
+    "a","b","c","d","e","f","g","h","i","j","k","l","m","n","p","q","r","s","t","u","v","x","y","w","o","z","ñ","Ñ",
+    //LETRAS EN MAYÚSCULAS
+    "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", " ",
+    //letras con tildes, mayusculas y minusculas
+    "á",  "é",  "í",  "ó",  "ú",  "Á",  "É",  "Í",  "Ó",  "Ú"
+
+  ];
+  const numeroPermitidos=[
+    '1', '2', '3','4','5','6','7','8','9','0'
+  ];
+  const caracteresPermitidos=[
+    '@','_','-','.'
+  ];
+
+
+  if (!(letrasPermitidas.includes(event.key))){
+    event.preventDefault();
+    return;
+  }
+
+}
 function listarLibro() {
   var capturarFiltro = document.getElementById("inputSearch").value;
   var urlLocal = url;
@@ -242,8 +272,8 @@ function registrarLibro() {
       $.ajax({
           url: url,
           type: "POST",
-          
-          data: formData,
+          contentType: "application/json",
+          data: JSON.stringify(formData),
           success: function (result) {
               Swal.fire({
                   title: "¡Excelente!",
