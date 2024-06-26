@@ -52,7 +52,13 @@
 
             <div class="col col-xl-6 col-12">
                 <b><label for="">Tipo usuario *</label></b>
-                <input type="text" id="tipo_usuario" class="form-control" onfocusout="validarTipo_usuario(this);" />
+                <select name="" id="tipo_usuario" class="form-select" onfocusout="validarTipo_usuario(this);">
+                    <option value="" selected disabled style="font-weight: bold;">Selecciona una opción</option>
+                    <option value="lector" style="font-weight: bold;">Lector</option>
+                    <option value="bibliotecario" style="font-weight: bold;">Bibliotecario</option>
+                    <option value="administrador" style="font-weight: bold;">Administrador</option>
+                    
+                </select>
             </div>
             
         </div>

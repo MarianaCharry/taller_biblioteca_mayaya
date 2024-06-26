@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <title>Añadir préstamo</title>
+    
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <a href="../html/paginaPrincipal.html"> <img src="../img/volver.png" alt="" width="50px" style="margin-top: 80px;"></a>
+        </div>
+        <h1 style="margin-top: 100px">Añadir préstamo</h1>
+        <h6>Todos los campos con asterisco son obligatorios *</h6>
+        <br>
+        <div class="row">
+            <div class="col col-xl-6 col-12">
+                <b><label for="usuario" class="form-label">Nombre usuario</label></b>
+                <select name="usuario" id="id_usuario" class="form-select">
+                    <option value="" selected disabled>Seleccione el usuario</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </div>
+
+            <div class="col col-xl-6 col-12">
+                <b><label for="libro" class="form-label">Título libro</label></b>
+                <select name="libro" id="id_libro" class="form-select">
+                    <option value="" selected disabled>Seleccione el libro</option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </div>
+
+            <div class="col col-xl-6 col-12">
+                <b><label for="">Fecha préstamo *</label></b>
+                <input type="text" id="fecha_prestamo" step="1" class="form-control"
+                    onfocusout="validarIsbn_libro(this);" />
+            </div>
+            <div class="col col-xl-6 col-12">
+                <b><label for="">Fecha devolución *</label></b>
+                <input type="text" id="fecha_devolucion" class="form-control" onfocusout="validarGenero_libro(this);" />
+            </div>
+            <div class="col col-xl-6 col-12">
+                <b><label for="">Estado *</label></b>
+                <select name="" id="estado_prestamo" class="form-select" onfocusout="validarEstado_prestamo(this);">
+                    <option value="" selected disabled style="font-weight: bold;">Selecciona una opción</option>
+                    <option value="prestado" style="font-weight: bold;">Prestado</option>
+                    <option value="entregado" style="font-weight: bold;">Entregado</option>
+                    <option value="cancelado" style="font-weight: bold;">Cancelado</option>
+                    
+                </select>
+            </div>
+            
+        </div>
+        <br>
+        <button class="btn btn-success" onclick="registrarPrestamo();">
+            Enviar
+        </button>
+        <button class="btn btn-primary" onclick="limpiarPrestamo();">
+            Limpiar
+        </button>
+        <a href="./paginaPrincipal.html"><button class="btn btn-warning">Ir a página Principal</button></a>
+    </div>
+    <script src="/front-end/js/prestamo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>

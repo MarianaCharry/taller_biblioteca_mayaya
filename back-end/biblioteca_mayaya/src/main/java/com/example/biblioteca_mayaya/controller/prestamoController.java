@@ -2,16 +2,17 @@ package com.example.biblioteca_mayaya.controller;
 
 import java.time.LocalDate;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.biblioteca_mayaya.interfaceService.IPrestamoService;
@@ -32,7 +33,7 @@ public class prestamoController {
 	
 	@PostMapping("/")
 
-    public ResponseEntity<Object> save(@ModelAttribute("prestamo") prestamo prestamo) {
+    public ResponseEntity<Object> save(@RequestBody prestamo prestamo) {
 
     	
 
@@ -93,7 +94,7 @@ public class prestamoController {
 		
 		
 		@PutMapping("/{id_prestamo}")
-		public ResponseEntity<Object> update  ( @PathVariable String id_prestamo, @ModelAttribute("prestamo") prestamo prestamoUpdate){
+		public ResponseEntity<Object> update  ( @PathVariable String id_prestamo, @RequestBody prestamo prestamoUpdate){
 			 // Verificar si hay campos vacíos
 	        if (prestamoUpdate.contieneCamposVacios()) {
 	            return new ResponseEntity<>("Todos los campos son obligatorios", HttpStatus.BAD_REQUEST);

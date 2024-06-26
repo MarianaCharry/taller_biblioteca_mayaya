@@ -152,7 +152,8 @@ if (validarCampos()) {
   $.ajax({
       url:url+id_usuario,
       type: "PUT",
-      data: formData,
+      contentType: "application/json",
+          data: JSON.stringify(formData),
     
       
       success: function(result) {
@@ -239,7 +240,8 @@ function registrarUsuario() {
       $.ajax({
           url: url,
           type: "POST",
-          data: formData,
+          contentType: "application/json",
+          data: JSON.stringify(formData),
           success: function (result) {
               Swal.fire({
                   title: "¡Excelente!",
