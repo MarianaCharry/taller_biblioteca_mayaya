@@ -62,7 +62,7 @@ public class prestamoController {
         }
         if (prestamo.getEstado_prestamo().equals("")) {
             
-            return new ResponseEntity<>("El campo habitacion es obligatorio", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("El campo estado es obligatorio", HttpStatus.BAD_REQUEST);
         }   
 	    	  
 	    // Guardar el nuevo ingreso

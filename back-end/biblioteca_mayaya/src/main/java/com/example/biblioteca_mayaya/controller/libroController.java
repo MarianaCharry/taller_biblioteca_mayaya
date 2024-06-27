@@ -48,8 +48,11 @@ public ResponseEntity<Object> save(@RequestBody libro libro) {
             
             return new ResponseEntity<>("El autor del libro es obligatorio", HttpStatus.BAD_REQUEST);
         }
-
-        if (libro.getIsbn_libro().equals("")) {
+        
+        if(libro.getIsbn_libro().length()!=13) {
+        	return new ResponseEntity<>("Error, son solamente 13 numeros",HttpStatus.BAD_REQUEST);
+        }
+        if ( libro.getIsbn_libro().equals("")) {
             
             return new ResponseEntity<>("El ISBN del libro es obligatorio", HttpStatus.BAD_REQUEST);
         }

@@ -38,7 +38,7 @@
             <div class="col col-xl-6 col-12">
                 <b><label for="">ISBN libro *</label></b>
                 <input type="number" id="isbn_libro" step="1" class="form-control"
-                    onfocusout="validarIsbn_libro(this);" />
+                    onfocusout="validarIsbn_libro(this);" min="1000000000000" max="9999999999999" />
             </div>
             <div class="col col-xl-6 col-12">
                 <b><label for="">Genero libro *</label></b>
@@ -51,8 +51,8 @@
             </div>
             <div class="col col-xl-6 col-12">
                 <b><label for="">Numero ejemplares ocupados *</label></b>
-                <input type="text" id="numero_ejemplares_ocupados" class="form-control"
-                    onfocusout="validarNumero_ejemplares_ocupados(this);" />
+                <input type="number" id="numero_ejemplares_ocupados" class="form-control"
+                    onfocusout="validarNumero_ejemplares_ocupados(this);" min="0" />
             </div>
             
         </div>
