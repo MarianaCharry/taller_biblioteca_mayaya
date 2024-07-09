@@ -1,5 +1,6 @@
 package com.example.bibliomayaya
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -48,7 +49,7 @@ class guardarLibroFragment : Fragment() {
 
     private lateinit var btnGuardar: Button
 
-    private var id:String="1435caae-3ed3-4455-98f7-32258fe0673f"
+    private var id:String=""
 
     /*respuestas:
     * request es la peticion que hace a la API

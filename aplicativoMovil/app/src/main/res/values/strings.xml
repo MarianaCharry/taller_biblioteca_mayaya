@@ -14,4 +14,5 @@
     <string name="placeHolderGenero">Escriba el genero</string>
     <string name="placeHolderDisponible">Escriba el n° de disponibles</string>
     <string name="placeHolderOcupado">Escriba el n° de ocupados</string>
+    <string name="irAUsuario">Ir a usuarios</string>
 </resources>

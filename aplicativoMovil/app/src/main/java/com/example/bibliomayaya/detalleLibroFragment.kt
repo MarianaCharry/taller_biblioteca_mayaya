@@ -5,6 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.example.bibliomayaya.config.config
+import com.example.bibliomayaya.models.libro
+import com.google.gson.Gson
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +31,50 @@ class detalleLibroFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    //definir las variables
+    private lateinit var lblTitulo: TextView
+    private lateinit var lblAutor: TextView
+    private lateinit var lblISBN: TextView
+    private lateinit var lblGenero: TextView
+    private lateinit var lblDisponible: TextView
+    private lateinit var lblOcupado: TextView
+
+    private lateinit var btnEditar: Button
+    private lateinit var btnEliminar: Button
+
+    private var id:String="1435caae-3ed3-4455-98f7-32258fe0673f"
+
+    fun consultarLibro(){
+        if (id!=""){
+
+            var request= JsonObjectRequest(
+                Request.Method.GET, //método de la petición
+                config.urlLibro+id, //url
+                null, //parámetros
+                {response->
+                    val gson= Gson()
+                    val libro: libro =gson.fromJson(response.toString(), libro::class.java)
+                    lblTitulo.setText(libro.autor_libro)
+                    lblAutor.setText(libro.autor_libro)
+                    lblISBN.setText(libro.isbn_libro)
+                    lblGenero.setText(libro.genero_libro)
+                    lblDisponible.setText(libro.numero_ejemplares_disponibles)
+                    lblOcupado.setText(libro.numero_ejemplares_ocupados)
+
+
+                },
+                {error->
+                    Toast.makeText(
+                        context,
+                        "Error al consultar",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            )
+            var queue= Volley.newRequestQueue(context)
+            queue.add(request)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -29,12 +83,35 @@ class detalleLibroFragment : Fragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalle_libro, container, false)
+        var view= inflater.inflate(R.layout.fragment_detalle_libro, container, false)
+        lblTitulo=view.findViewById(R.id.lblTituloDetalle)
+        lblAutor=view.findViewById(R.id.lblAutorDetalle)
+        lblISBN=view.findViewById(R.id.lblISBNDetalle)
+        lblGenero=view.findViewById(R.id.lblGeneroDetalle)
+        lblDisponible=view.findViewById(R.id.lblDisponiblesDetalle)
+        lblOcupado=view.findViewById(R.id.lblOcupadosDetalle)
+        btnEditar=view.findViewById(R.id.btnEditar)
+        btnEditar.setOnClickListener{editarLibro()}
+        btnEliminar=view.findViewById(R.id.btnEliminar)
+        btnEliminar.setOnClickListener{eliminarLibro()}
+        consultarLibro()
+        return view
+
+    }
+
+    fun editarLibro(){
+
+    }
+
+
+    fun eliminarLibro(){
+
     }
 
     companion object {
