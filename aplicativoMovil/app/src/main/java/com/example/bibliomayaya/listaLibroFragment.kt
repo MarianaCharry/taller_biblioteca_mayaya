@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.Volley
+import com.example.bibliomayaya.config.config
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +24,25 @@ class listaLibroFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    fun cargar_libros(){
+        try{
+            var request=JsonArrayRequest(
+                Request.Method.GET,
+                config.urlLibro,
+                null,
+                {response->
+                    var registros=response
+
+                },
+                {error->}
+            )
+            val queue= Volley.newRequestQueue(context)
+            queue.add(request)
+        } catch (e:Exception){
+
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
