@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../SitioSaludHospi"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "taller_biblioteca_mayaya"
+	}
+}
