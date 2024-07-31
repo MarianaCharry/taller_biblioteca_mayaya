@@ -6,23 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4D0082"
-    tools:context=".agregarLibro">
-
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView3"
-        android:name="com.example.bibliomayaya.guardarLibroFragment"
-        android:layout_width="412dp"
-        android:layout_height="656dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+    tools:context=".contenedorDetalleLibro">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView4"
         android:layout_width="43dp"
         android:layout_height="60dp"
         android:onClick="volver"
@@ -34,22 +21,34 @@
         app:layout_constraintVertical_bias="0.044"
         app:srcCompat="@drawable/left_arrow_back_svgrepo_com" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView2"
+        android:name="com.example.bibliomayaya.detalleLibroFragment"
+        android:layout_width="338dp"
+        android:layout_height="669dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.951" />
+
     <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView14"
+        android:layout_width="268dp"
+        android:layout_height="88dp"
         android:fontFamily="sans-serif-black"
-        android:text="Agregar libro"
-        android:textColor="#ffffff"
+        android:text="Detalle libro"
+        android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.672"
+        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.046" />
 
-    <!--Contenedor del menú bottom-->
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView4"
         android:name="com.example.bibliomayaya.contenedorMenuBottom"
@@ -196,6 +195,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.983" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

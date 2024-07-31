@@ -19,10 +19,6 @@ class menuOpcionesLibro : AppCompatActivity() {
             insets
         }
     }
-    fun irMenuLibros(view: View){
-        var intent= Intent(application,menuOpcionesLibro::class.java)
-        startActivity(intent)
-    }
 
     fun irGuardarLibro(view: View){
         var intent= Intent(application,agregarLibro::class.java)
@@ -31,6 +27,31 @@ class menuOpcionesLibro : AppCompatActivity() {
 
     fun volver(view: View){
         var intent= Intent(application,MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun irDetalleLibro(view: View){
+        var intent= Intent(application,contenedorDetalleLibro::class.java)
+        startActivity(intent)
+    }
+
+    fun irOpcionesLibros(view: View){
+        var intent= Intent(application,menuOpcionesLibro::class.java)
+        startActivity(intent)
+    }
+
+    fun irInicio(view: View){
+        var intent= Intent(application,MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun irSoporteAyudaLibros(view: View){
+        var intent= Intent(application,ayudaLibros::class.java)
+        startActivity(intent)
+    }
+
+    fun irListaLibro(view: View){
+        var intent= Intent(application,contenedorListaLibro::class.java)
         startActivity(intent)
     }
 }

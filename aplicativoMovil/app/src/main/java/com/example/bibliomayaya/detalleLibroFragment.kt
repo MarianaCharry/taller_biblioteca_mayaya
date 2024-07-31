@@ -96,10 +96,10 @@ class detalleLibroFragment : Fragment() {
         lblGenero=view.findViewById(R.id.lblGeneroDetalle)
         lblDisponible=view.findViewById(R.id.lblDisponiblesDetalle)
         lblOcupado=view.findViewById(R.id.lblOcupadosDetalle)
-        btnEditar=view.findViewById(R.id.btnEditar)
-        btnEditar.setOnClickListener{editarLibro()}
-        btnEliminar=view.findViewById(R.id.btnEliminar)
-        btnEliminar.setOnClickListener{eliminarLibro()}
+        //btnEditar=view.findViewById(R.id.btnEditar)
+        //btnEditar.setOnClickListener{editarLibro()}
+        //btnEliminar=view.findViewById(R.id.btnEliminar)
+        //btnEliminar.setOnClickListener{eliminarLibro()}
         consultarLibro()
         return view
 

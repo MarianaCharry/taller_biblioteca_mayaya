@@ -16,6 +16,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".contenedorListaLibro"
+            android:exported="false" />
+        <activity
+            android:name=".ayudaLibros"
+            android:exported="false" />
+        <activity
+            android:name=".contenedorDetalleLibro"
+            android:exported="false" />
+        <activity
             android:name=".agregarLibro"
             android:exported="false" />
         <activity
