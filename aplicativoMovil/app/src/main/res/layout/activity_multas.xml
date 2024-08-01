@@ -6,109 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4D0082"
-    tools:context=".menuOpcionesLibro">
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:onClick="irGuardarLibro"
-        android:text="Agregar libro"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:onClick="irSoporteAyudaLibros"
-        android:text="Ayuda"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.766"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:onClick="irDetalleLibro"
-        android:text="Detalle libro"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
+    tools:context=".multas">
 
     <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="103dp"
-        android:layout_height="103dp"
-        android:onClick="irGuardarLibro"
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329"
-        app:srcCompat="@mipmap/cuadro" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="103dp"
-        android:layout_height="103dp"
-        android:onClick="irListaLibro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619"
-        app:srcCompat="@mipmap/cuadro" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="103dp"
-        android:layout_height="103dp"
-        android:onClick="irSoporteAyudaLibros"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.824"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619"
-        app:srcCompat="@mipmap/cuadro" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="283dp"
-        android:layout_height="65dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Menú libros"
-        android:textColor="#ffffff"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
+        app:srcCompat="@mipmap/aviso" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -117,93 +26,57 @@
         android:onClick="volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102"
+        app:layout_constraintVertical_bias="0.044"
         app:srcCompat="@drawable/left_arrow_back_svgrepo_com" />
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="103dp"
-        android:layout_height="103dp"
-        android:onClick="irDetalleLibro"
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="268dp"
+        android:layout_height="88dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Multas"
+        android:textColor="@color/white"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.824"
+        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329"
-        app:srcCompat="@mipmap/cuadro" />
+        app:layout_constraintVertical_bias="0.046" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="74dp"
-        android:layout_height="75dp"
-        android:onClick="irGuardarLibro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338"
-        app:srcCompat="@drawable/plus_circle_1427_svgrepo_com" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:onClick="irListaLibro"
-        android:text="Lista libro"
+        android:text="Sección en proceso"
         android:textColor="#ffffff"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.224" />
 
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="74dp"
-        android:layout_height="75dp"
-        android:onClick="irDetalleLibro"
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Disculpe las molestias"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338"
-        app:srcCompat="@drawable/line_detail_list_checkbox_svgrepo_com" />
-
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="74dp"
-        android:layout_height="75dp"
-        android:onClick="irListaLibro"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615"
-        app:srcCompat="@drawable/list_clipboard_svgrepo_com" />
-
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="74dp"
-        android:layout_height="75dp"
-        android:onClick="irSoporteAyudaLibros"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.78"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615"
-        app:srcCompat="@drawable/ask_faq_help_svgrepo_com" />
+        app:layout_constraintVertical_bias="0.808" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView4"
@@ -234,7 +107,7 @@
         android:layout_width="51dp"
         android:layout_height="18dp"
         android:fontFamily="sans-serif-medium"
-        android:onClick="irOpcionesLibro"
+        android:onClick="irOpcionesLibros"
         android:text="  Libros"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -356,20 +229,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.983" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Selecciona una opción:"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.293"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

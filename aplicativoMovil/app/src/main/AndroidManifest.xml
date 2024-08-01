@@ -16,6 +16,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".prestamos"
+            android:exported="false" />
+        <activity
+            android:name=".usuarios"
+            android:exported="false" />
+        <activity
+            android:name=".multas"
+            android:exported="false" />
+        <activity
             android:name=".contenedorListaLibro"
             android:exported="false" />
         <activity

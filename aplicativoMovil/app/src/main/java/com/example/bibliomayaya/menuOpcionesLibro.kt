@@ -54,4 +54,21 @@ class menuOpcionesLibro : AppCompatActivity() {
         var intent= Intent(application,contenedorListaLibro::class.java)
         startActivity(intent)
     }
+
+    fun irMultas(view: View){
+        var intent= Intent(application,multas::class.java)
+        startActivity(intent)
+    }
+
+    fun irUsuarios(view: View){
+        var intent= Intent(application,usuarios::class.java)
+        startActivity(intent)
+    }
+
+    fun irPrestamos(view: View){
+        var intent= Intent(application,prestamos::class.java)
+        startActivity(intent)
+    }
+
+
 }
